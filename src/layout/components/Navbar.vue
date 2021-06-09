@@ -1,29 +1,33 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <!-- <hamburger :is-active="" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
+    <hamburger :is-active="vuex_sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb class="breadcrumb-container" />
+
+    <div></div>
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar"> -->
+          <img :src="vuex_user.avatarUrl || vuex_default_avatar" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
             <el-dropdown-item>
-              Home
+              主页
             </el-dropdown-item>
           </router-link>
           <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-            <el-dropdown-item>Github</el-dropdown-item>
+            <el-dropdown-item>PanJiaChen Github</el-dropdown-item>
           </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
+          <!-- <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
             <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
+          </a> -->
           <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">Log Out</span>
+            <span style="display:block;">登出</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -32,7 +36,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 
@@ -41,19 +45,37 @@ export default {
     Breadcrumb,
     Hamburger
   },
-  computed: {
-    ...mapGetters([
-      'sidebar',
-      'avatar'
-    ])
+  // computed: {
+  //   ...mapGetters([
+  //     'sidebar',
+  //     'avatar'
+  //   ])
+  // },
+  watch: {
+    'vuex_socket_msg_temp.code': (newV) => {
+      console.log('vuex_socket_msg_temp.code', newV)
+    }
   },
   methods: {
-    toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
+    toggleSideBar () {
+      // this.$store.dispatch('app/toggleSideBar')
+      this.$vuex('vuex_sidebar.opened', !this.vuex_sidebar.opened)
+      this.$vuex('vuex_sidebar.withoutAnimation', false)
     },
-    async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    logout () {
+      // await this.$store.dispatch('user/logout')
+
+      // 注意：request.js文件也有退出登录方法，需要同步修改
+      localStorage.clear()
+      this.$vuex('vuex_user', {})
+      // this.$vuex('vuex_menu', [])
+
+      this.$message.success('登出成功')
+
+      // this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+      this.$router.push(`/login`)
+      // location.reload()
+      // location.href = '/login'
     }
   }
 }
@@ -65,18 +87,18 @@ export default {
   overflow: hidden;
   position: relative;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
     line-height: 46px;
     height: 100%;
     float: left;
     cursor: pointer;
-    transition: background .3s;
-    -webkit-tap-highlight-color:transparent;
+    transition: background 0.3s;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
-      background: rgba(0, 0, 0, .025)
+      background: rgba(0, 0, 0, 0.025);
     }
   }
 
@@ -103,10 +125,10 @@ export default {
 
       &.hover-effect {
         cursor: pointer;
-        transition: background .3s;
+        transition: background 0.3s;
 
         &:hover {
-          background: rgba(0, 0, 0, .025)
+          background: rgba(0, 0, 0, 0.025);
         }
       }
     }

@@ -1,0 +1,193 @@
+// element-ui 相关 ↓
+
+/* 表格最前面的序号样式 */
+.indexClassName {
+  color: #909399;
+}
+
+/* 降低table的Header的高度 */
+// .el-table__header th {
+//   padding: 7px 0;
+// }
+
+.el-card__header {
+  padding: 15px 20px;
+}
+
+/* el-textarea输入框样式 */
+.el-textarea .el-input__count {
+  bottom: -18px;
+  // height: 30px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* 取消添加图片和删除图片时的特效动画 */
+.el-upload-list__item {
+  transition: none !important;
+}
+
+// element-ui 相关 ↑
+
+// flex以及布局 相关 ↓
+
+.t-c {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-c {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.jc-c {
+  justify-content: center;
+}
+
+.jc-e {
+  justify-content: flex-end;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.ai-c {
+  align-items: center;
+}
+
+// flex以及布局 相关 ↑
+
+// 间距相关 ↓
+
+.m-t-10 {
+  margin-top: 10px;
+}
+
+.m-l-10 {
+  margin-left: 10px;
+}
+
+.m-l-15 {
+  margin-left: 15px;
+}
+
+.m-l-20 {
+  margin-left: 20px;
+}
+
+.m-l-30 {
+  margin-left: 30px;
+}
+
+.m-r-10 {
+  margin-right: 10px;
+}
+
+.m-r-15 {
+  margin-right: 15px;
+}
+
+.m-r-20 {
+  margin-right: 20px;
+}
+
+.m-r-30 {
+  margin-right: 30px;
+}
+
+.m-l-r-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+// 间距相关 ↑
+
+// 高度和宽度相关 ↓
+
+.h100-calc {
+  height: calc(100vh - 90px);
+}
+
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+// 高度和宽度相关 ↑
+
+// 鼠标指针相关 ↓
+
+.hand {
+  cursor: pointer;
+}
+
+// 鼠标指针相关 ↑
+
+// 滚动条相关 ↓
+
+.overflow-y {
+  overflow-y: overlay;
+}
+
+/** 滚动条的宽度 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+// 滚动条的滑块
+::-webkit-scrollbar-thumb {
+  background-color: #DDDEE0;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(85, 85, 85, 0.4);
+}
+
+// 滚动条相关 ↑
+
+// 阴影相关 ↓
+
+// 基础投影
+.base-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+}
+
+// 浅色投影
+.light-shadow {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+}
+
+// 阴影相关 ↑
+
+// 其他 ↓
+
+.yes {
+  color: #67C23A;
+
+  input {
+    color: #67C23A;
+  }
+}
+
+.no {
+  color: #E6A23C;
+
+  input {
+    color: #E6A23C;
+  }
+}
+
+// 其他 ↑
